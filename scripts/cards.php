@@ -2,7 +2,10 @@
 
 function addCard($id='', $title='', $author='', $price = '', $img='')
 {
-	$img = $img ?: './img/nocover.png'; 
+    if(!file_exists($img))
+    {
+        $img = './img/nocover.png';
+    }
 ?>
 
 <script type="text/javascript">
@@ -19,7 +22,6 @@ function addCard($id='', $title='', $author='', $price = '', $img='')
         <img class="card-img-top mt-2" src="<?= $img ?>" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title"><?= $title ?></h5>
-            <p class="card-text"><?= $author ?></p>
             <div class="fluid pb-2 text-center">
 <?php 
     if (isset($_SESSION["id"]) and $_SESSION['is_admin'])
@@ -29,6 +31,7 @@ function addCard($id='', $title='', $author='', $price = '', $img='')
     }
 ?>
             </div>
+            <p class="card-text"><?= $author ?></p>
             <p class="card-text"><?= $price ?></p>
             <a class="btn btn-primary" href="/flab/index.php?action=view_book&id=<?= $id ?>">Детальніше</a>
         </div>

@@ -6,7 +6,7 @@ if(!isset($_SESSION["id"]))
 {
     echo '<a class="btn btn-primary btn-lg mb-3" href="/flab/index.php?action=registration">Реєстрація</a>';
 }
-if (isset($_SESSION["id"]) and $_SESSION['is_admin'])
+if (isset($_SESSION["id"]))
 {
     echo '<a class="btn btn-primary btn-lg mb-3" href="/flab/index.php?action=add_book">Додати товар</a>';
 }

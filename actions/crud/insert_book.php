@@ -51,8 +51,11 @@ if(!preg_match($pattern, $_POST['publishing_house']))
     $errors .= 'publ@';
 }
 
-$uploadfile = './img/' . $_FILES['cover']['name'];
-move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile);
+if ($_FILES['cover']['name'] != '') 
+{
+    $uploadfile = './img/' . $_FILES['cover']['name'];
+    move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile);
+}
 
 if ($errors !== '')
 {
