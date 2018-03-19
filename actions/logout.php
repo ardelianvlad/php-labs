@@ -8,7 +8,7 @@ session_unset();
 // Destroy the session. 
 session_destroy(); 
 
-header("Location: /flab/index.php?action=main");
+header("Location: /index.php?action=main");
 exit();
 
 ?>

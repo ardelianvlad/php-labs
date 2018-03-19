@@ -35,7 +35,7 @@ $img = $row['cover'] ?: './img/nocover.png';
         var txt;
         var r = confirm("Ви точно хочете видалити цей товар?");
         if (r == true) {
-            document.location.href = '/flab/index.php?action=delete_book&id=' + <?= $id ?>;
+            document.location.href = '/index.php?action=delete_book&id=' + <?= $id ?>;
         }
     }
 </script>
@@ -49,7 +49,7 @@ $img = $row['cover'] ?: './img/nocover.png';
 <?php 
     if (isset($_SESSION["id"]) and $_SESSION['is_admin'])
     {
-        echo '<a href="/flab/index.php?action=edit_book&id=' . $id . '" class="btn btn-warning btn-sm mr-3">Редагувати</a>'
+        echo '<a href="/index.php?action=edit_book&id=' . $id . '" class="btn btn-warning btn-sm mr-3">Редагувати</a>'
             .'<a href="javascript: onClick()" class="btn btn-danger btn-sm mr-3">Видалити</a>';
     }
 ?>

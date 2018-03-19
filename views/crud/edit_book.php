@@ -46,7 +46,7 @@ else
 }
 
 ?>
-<form enctype="multipart/form-data" action="/flab/index.php?action=update_book&id=<?= $id ?>" method="post" class="mt-2">
+<form enctype="multipart/form-data" action="/index.php?action=update_book&id=<?= $id ?>" method="post" class="mt-2">
 <?php 
 if(in_array('isbn', $errors))
 {

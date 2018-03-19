@@ -34,7 +34,7 @@ if (!isset($_SESSION["id"]))
 
     } 
 ?>
-    <form action="/flab/index.php?action=register" method="post">
+    <form action="/index.php?action=register" method="post">
         <div class="form-group row">
             <label for="username">Логін</label>
             <input type="text" placeholder="логін" name="username" class="form-control rounded"/>
@@ -75,6 +75,6 @@ if (!isset($_SESSION["id"]))
 }
 else
 {
-    header("Location: /flab/index.php?action=alert");
+    header("Location: /index.php?action=alert");
 }
 ?>

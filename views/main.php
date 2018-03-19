@@ -4,11 +4,11 @@
 <?php 
 if(!isset($_SESSION["id"]))
 {
-    echo '<a class="btn btn-primary btn-lg mb-3" href="/flab/index.php?action=registration">Реєстрація</a>';
+    echo '<a class="btn btn-primary btn-lg mb-3" href="/index.php?action=registration">Реєстрація</a>';
 }
 if (isset($_SESSION["id"]))
 {
-    echo '<a class="btn btn-primary btn-lg mb-3" href="/flab/index.php?action=add_book">Додати товар</a>';
+    echo '<a class="btn btn-primary btn-lg mb-3" href="/index.php?action=add_book">Додати товар</a>';
 }
 ?>
     </div>

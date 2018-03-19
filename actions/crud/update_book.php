@@ -59,7 +59,7 @@ if(!preg_match($pattern, $_POST['publishing_house']))
 
 if ($errors !== '')
 {
-    header('Location: /flab/index.php?action=edit_book&id=' . $id . '&errors=' . $errors);
+    header('Location: /index.php?action=edit_book&id=' . $id . '&errors=' . $errors);
     exit();
 }
 
@@ -110,6 +110,6 @@ if (!$conn->query($sql)) {
     die("Error: " . $sql . "<br>" . $conn->error);
 }
 
-header('Location: /flab/index.php?action=main');
+header('Location: /index.php?action=main');
 
 ?>

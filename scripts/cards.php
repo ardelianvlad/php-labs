@@ -13,7 +13,7 @@ function addCard($id='', $title='', $author='', $price = '', $img='')
         var txt;
         var r = confirm("Ви точно хочете видалити цей товар?");
         if (r == true) {
-            document.location.href = '/flab/index.php?action=delete_book&id=' + id;
+            document.location.href = '/index.php?action=delete_book&id=' + id;
         }
     }
 </script>
@@ -26,16 +26,18 @@ function addCard($id='', $title='', $author='', $price = '', $img='')
 <?php 
     if (isset($_SESSION["id"]) and $_SESSION['is_admin'])
     {
-        echo '<a href="/flab/index.php?action=edit_book&id=' . $id . '" class="btn btn-warning btn-sm ml-1 mr-1 mt-2">Редагувати</a>'
+        echo '<a href="/index.php?action=edit_book&id=' . $id . '" class="btn btn-warning btn-sm ml-1 mr-1 mt-2">Редагувати</a>'
             . '<a href="javascript: onClick(' . $id . ')" class="btn btn-danger btn-sm ml-1 mr-1 mt-2">Видалити</a>';
     }
 ?>
             </div>
             <p class="card-text"><?= $author ?></p>
             <p class="card-text"><?= $price ?></p>
-            <a class="btn btn-primary" href="/flab/index.php?action=view_book&id=<?= $id ?>">Детальніше</a>
+            <a class="btn btn-primary" href="/index.php?action=view_book&id=<?= $id ?>">Детальніше</a>
         </div>
     </div>
 <?php
 }
 ?>
+
+

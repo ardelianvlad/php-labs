@@ -25,7 +25,7 @@ if($_POST['region'] <= 0 || $_POST['region'] > 27)
     $errors .= 'region';
 }
 
-$location = 'Location: /flab/index.php?action=registration';
+$location = 'Location: /index.php?action=registration';
 if ($errors != '') {
     $location .= '&errors=' . $errors;
     header($location);
@@ -55,7 +55,7 @@ else
         die("Error: " . $sql . "<br>" . $conn->error);
     }
 
-    header('Location: /flab/index.php?action=success');
+    header('Location: /index.php?action=success');
 
 }
 

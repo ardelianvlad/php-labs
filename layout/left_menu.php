@@ -3,10 +3,10 @@
         <div class="col-3">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="/flab/index.php?action=main" style="display: inline-block">Головна</a>
+                    <a class="nav-link" href="/index.php?action=main" style="display: inline-block">Головна</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/flab/index.php?action=about" style="display: inline-block">Про сайт</a>
+                    <a class="nav-link" href="/index.php?action=about" style="display: inline-block">Про сайт</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" style="display: inline-block">Розділи</a>

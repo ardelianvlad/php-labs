@@ -6,7 +6,7 @@
         echo '<div class="alert alert-danger" role="alert">Невірний логін або пароль.</div>';
     }
 ?>
-    <form action="/flab/index.php?action=check_user" method="post">
+    <form action="/index.php?action=check_user" method="post">
         <div class="form-group row">
             <label for="username">Логін</label>
             <input type="text" placeholder="логін" name="username" class="form-control rounded"/>

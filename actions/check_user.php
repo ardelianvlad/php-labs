@@ -26,12 +26,12 @@
             $_SESSION['id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['is_admin'] = $row['admin'];
-            header("Location: /flab/index.php?action=main");
+            header("Location: /index.php?action=main");
             exit();
         }
     }
 
-    header('Location: /flab/index.php?action=login&error=1');
+    header('Location: /index.php?action=login&error=1');
 
 
 ?>

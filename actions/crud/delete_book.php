@@ -29,6 +29,6 @@ if (!$conn->query($sql)) {
     die("Error: " . $sql . "<br>" . $conn->error);
 }
 
-header('Location: /flab/index.php?action=main');
+header('Location: /index.php?action=main');
 
 ?>
