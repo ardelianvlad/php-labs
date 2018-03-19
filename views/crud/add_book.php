@@ -112,10 +112,16 @@ if(in_array('price', $errors))
             <input type="text" id="price" class="form-control" name="price" placeholder="ціна">
         </div>
     </div>
+<?php
+if(in_array('cover', $errors))
+{
+    echo '<div class="text-danger" role="alert">Некорректний файл</div>';
+}
+?>
     <div class="form-group row">
         <label for="cover" class="col-sm-4 col-form-label">Обкладинка: </label>
         <div class="col-sm-8">
-            <input type="file" id="cover" class="form-control" name="cover">
+            <input type="file" id="cover" class="form-control" name="cover" accept=".jpg, .jpeg, .png, .gif">
         </div>
     </div>
     <button type="submit" class="btn btn-primary pull-right">Зберегти</button>

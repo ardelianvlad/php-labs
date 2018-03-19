@@ -6,7 +6,7 @@ if (!isset($_SESSION["id"]))
 }
 elseif (!$_SESSION['is_admin'])
 {
-    die('<h1>Ти не адмін!</h1>');
+    die('<h1>Дану дію може виконати лише адміністратор</h1>');
 }
 
 require './configs/dbconf.php';
@@ -21,50 +21,7 @@ $conn->set_charset('utf8');
 
 $id = $conn->real_escape_string($_GET['id']);
 
-$errors = '';
-$pattern = '/[A-Za-zА-Яа-яЇїІіЄє0-9-\.\,-_]+/u';
-
-if (!preg_match('/[\d-]{17}/', $_POST['isbn']))
-{
-    $errors .= 'isbn@';
-}
-if(!preg_match('/\d{4}/', $_POST['year']))
-{
-    $errors .= 'year@';
-}
-if(!preg_match('/\d{1,4}/', $_POST['count_of_pages']))
-{
-    $errors .= 'pages@';
-}
-if(!preg_match('/\d+[\.\,]*\d*/', $_POST['price']))
-{
-    $errors .= 'price@'; 
-}
-if(!preg_match($pattern, $_POST['name']))
-{
-    $errors .= 'name@';
-}
-if(!preg_match($pattern, $_POST['author']))
-{
-    $errors .= 'author@';
-}
-if(!preg_match($pattern, $_POST['genre']))
-{
-    $errors .= 'genre@';
-}
-if(!preg_match($pattern, $_POST['publishing_house']))
-{
-    $errors .= 'publ@';
-}
-
-if ($errors !== '')
-{
-    header('Location: /index.php?action=edit_book&id=' . $id . '&errors=' . $errors);
-    exit();
-}
-
-$uploadfile = './img/' . $_FILES['cover']['name'];
-move_uploaded_file($_FILES['cover']['tmp_name'], $uploadfile);
+require 'verify_fields.php';
 
 $keys = ['isbn', 'name', 'author', 'genre', 'year',  'count_of_pages', 'price'];
 $values = [];
@@ -87,7 +44,6 @@ if ($result->num_rows > 0)
         $pairs['cover'] = $uploadfile;
     }
 }
-
 
 $sql = 'UPDATE bookshop.books SET ';
 foreach ($pairs as $key => $value)

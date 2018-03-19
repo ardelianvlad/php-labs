@@ -6,7 +6,7 @@ if (!isset($_SESSION["id"]))
 }
 elseif (!$_SESSION['is_admin'])
 {
-    die('<h1>Ти не адмін!</h1>');
+    die('<h1>Дану дію може виконати лише адміністратор</h1>');
 }
 
 require './configs/dbconf.php';
