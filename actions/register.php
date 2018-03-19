@@ -48,7 +48,7 @@ else
     $email = $conn->real_escape_string($_POST['email']);
     $region = $conn->real_escape_string($_POST['region']);
 
-    $sql = 'INSERT INTO bookshop.users(username, password, email, region) VALUES'
+    $sql = 'INSERT INTO ' . $dbname . ' .users(username, password, email, region) VALUES'
         . sprintf('("%s", "%s", "%s", "%d");', $username, hashPassword($password), $email, $region);
 
     if (!$conn->query($sql)) {

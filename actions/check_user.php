@@ -14,7 +14,7 @@
 
     $username = $conn->real_escape_string($_POST['username']);
 
-    $sql = 'SELECT * FROM bookshop.users WHERE username = "' . $username . '";';
+    $sql = 'SELECT * FROM ' . $dbname . ' .users WHERE username = "' . $username . '";';
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0)

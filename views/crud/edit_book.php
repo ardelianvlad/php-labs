@@ -31,7 +31,7 @@ $conn->set_charset('utf8');
 
 $id = $conn->real_escape_string($_GET['id']);
 
-$sql = 'SELECT * FROM bookshop.books WHERE book_id = ' . $id .';';
+$sql = 'SELECT * FROM ' . $dbname . ' .books WHERE book_id = ' . $id .';';
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0)

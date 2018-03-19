@@ -34,7 +34,7 @@ $pairs = array_combine($keys, $values);
 $pairs['visible'] = $is_admin;
 $pairs['author_id'] = $_SESSION['id'];
 
-$result = $conn->query('SELECT cover FROM bookshop.books WHERE book_id = ' . $id);
+$result = $conn->query('SELECT cover FROM ' . $dbname . ' .books WHERE book_id = ' . $id);
 
 if ($result->num_rows > 0)
 {
@@ -45,7 +45,7 @@ if ($result->num_rows > 0)
     }
 }
 
-$sql = 'UPDATE bookshop.books SET ';
+$sql = 'UPDATE ' . $dbname . ' .books SET ';
 foreach ($pairs as $key => $value)
 {
     if (in_array($key, ['isbn', 'name', 'author', 'genre', 'publishing_house', 'cover']))

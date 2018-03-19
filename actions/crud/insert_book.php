@@ -28,7 +28,7 @@ array_push($values, $is_admin);
 array_push($values, $_SESSION['id']);
 array_push($values, $uploadfile);
 
-$sql = 'INSERT INTO bookshop.books(' . implode(', ' , $keys) . ', visible, author_id, cover) VALUES'
+$sql = 'INSERT INTO ' . $dbname . ' .books(' . implode(', ' , $keys) . ', visible, author_id, cover) VALUES'
         . vsprintf('("%s", "%s", "%s", "%s", %d, "%s", %d, %f, %d, %d, "%s") ', $values);
 
 if (!$conn->query($sql)) {

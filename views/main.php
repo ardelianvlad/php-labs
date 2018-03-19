@@ -28,7 +28,7 @@ if (isset($_SESSION["id"]))
 
     $conn->set_charset('utf8');
 
-    $sql = 'SELECT * FROM bookshop.books ORDER BY date DESC';
+    $sql = 'SELECT * FROM ' . $dbname . ' .books ORDER BY date DESC';
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0)
