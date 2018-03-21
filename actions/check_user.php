@@ -1,6 +1,5 @@
 <?php
 
-    require 'scripts/password_crypt.php';
     require 'configs/dbconf.php';
 
     $conn = new mysqli($servername, $username, $password, $dbname);
