@@ -21,9 +21,16 @@ $conn->set_charset('utf8');
 
 $id = $conn->real_escape_string($_GET['id']);
 
-$sql = 'DELETE FROM ' . $dbname . '.books WHERE book_id = ' . $id;
+$sql = 'SELECT cover FROM ' . $dbname . ' .books WHERE book_id = ' . $id .';';
+$result = $conn->query($sql);
 
-echo $sql;
+if ($result->num_rows > 0)
+{
+    $row = $result->fetch_assoc();
+    unlink($row['cover']);   
+}
+
+$sql = 'DELETE FROM ' . $dbname . '.books WHERE book_id = ' . $id;
 
 if (!$conn->query($sql)) {
     die("Error: " . $sql . "<br>" . $conn->error);
