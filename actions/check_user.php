@@ -20,7 +20,7 @@
     if ($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
-        if (confirmPassword($row['password'], $_POST['pass']))
+        if (password_verify($_POST['pass'], $row['password']))
         {
             session_start();
             $_SESSION['id'] = $row['user_id'];

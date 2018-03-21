@@ -49,7 +49,8 @@ else
     $region = $conn->real_escape_string($_POST['region']);
 
     $sql = 'INSERT INTO ' . $dbname . ' .users(username, password, email, region) VALUES'
-        . sprintf('("%s", "%s", "%s", "%d");', $username, hashPassword($password), $email, $region);
+        . sprintf('("%s", "%s", "%s", "%d");', 
+        $username, password_hash($password, PASSWORD_BCRYPT), $email, $region);
 
     if (!$conn->query($sql)) {
         die("Error: " . $sql . "<br>" . $conn->error);
