@@ -33,7 +33,6 @@ if ($errors != '') {
 else
 {
     require 'configs/dbconf.php';
-    require 'scripts/password_crypt.php';
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
