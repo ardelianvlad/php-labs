@@ -1,5 +1,7 @@
 <?php
 
+$uploadsdir = './uploads/';
+
 session_start();
 
 $action = $_GET['action'] ? $_GET['action'] : 'main';

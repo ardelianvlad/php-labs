@@ -11,14 +11,6 @@ elseif (!$_SESSION['is_admin'])
 
 require './configs/dbconf.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$conn->set_charset('utf8');
-
 $id = $conn->real_escape_string($_GET['id']);
 
 require 'verify_fields.php';
@@ -59,8 +51,6 @@ foreach ($pairs as $key => $value)
 }
 $sql = substr($sql, 0, -2);
 $sql .= ' WHERE book_id = ' . $id;
-
-echo $sql;
 
 if (!$conn->query($sql)) {
     die("Error: " . $sql . "<br>" . $conn->error);

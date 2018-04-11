@@ -21,7 +21,6 @@
         $row = $result->fetch_assoc();
         if (password_verify($_POST['pass'], $row['password']))
         {
-            session_start();
             $_SESSION['id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['is_admin'] = $row['admin'];

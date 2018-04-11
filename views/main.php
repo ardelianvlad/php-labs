@@ -1,3 +1,5 @@
+<script src="/js/confirm_delete.js"></script>
+
 <div class="container text-center mt-4">
 
     <div class="row">
@@ -16,17 +18,8 @@ if (isset($_SESSION["id"]))
     <div class="row">
 <?php 
 
-    require 'scripts/cards.php';
+    require 'views/crud/cards.php';
     require 'configs/dbconf.php';
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error)
-    {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-
-    $conn->set_charset('utf8');
 
     $sql = 'SELECT * FROM ' . $dbname . ' .books ORDER BY date DESC';
     $result = $conn->query($sql);
@@ -35,7 +28,7 @@ if (isset($_SESSION["id"]))
     {
         while ($row = $result->fetch_assoc())
         {
-            if ($row['visible'])
+            if ($row['visible'] or isset($_SESSION["id"]) and $_SESSION['is_admin'])
             {
                 addCard($row['book_id'], $row['name'], $row['author'], '<strong>' . $row['price'] . '₴</strong>', $row['cover']);
             }

@@ -7,14 +7,6 @@ if (!isset($_SESSION["id"]))
 
 require './configs/dbconf.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$conn->set_charset('utf8');
-
 require 'verify_fields.php';
 
 $keys = ['isbn', 'name', 'author', 'genre', 'year', 'publishing_house', 'count_of_pages', 'price'];

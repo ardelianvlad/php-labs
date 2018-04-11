@@ -2,21 +2,13 @@
 
 function addCard($id='', $title='', $author='', $price = '', $img='')
 {
+    global $uploadsdir;
+    $img = $uploadsdir . $img;
     if(!file_exists($img))
     {
-        $img = './img/nocover.png';
+        $img = $uploadsdir . 'nocover.png';
     }
 ?>
-
-<script type="text/javascript">
-    function onClick(id) {
-        var txt;
-        var r = confirm("Ви точно хочете видалити цей товар?");
-        if (r == true) {
-            document.location.href = '/index.php?action=delete_book&id=' + id;
-        }
-    }
-</script>
 
     <div class="card mb-2 mr-2 pl-2 pr-2 border-primary" style="width: 32%">
         <img class="card-img-top mt-2" src="<?= $img ?>" alt="Card image cap">

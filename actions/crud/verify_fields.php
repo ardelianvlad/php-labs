@@ -1,20 +1,20 @@
 <?php
 $errors = '';
-$pattern = '/[A-Za-zА-Яа-яЇїІіЄє0-9-\.\,-_]+/u';
+$pattern = '/^[\p{L}0-9-\.\,-_ ]+$/u';
 
-if (!preg_match('/[\d-]{17}/', $_POST['isbn']))
+if (!preg_match('/^[\d-]{17}$/', $_POST['isbn']))
 {
     $errors .= 'isbn@';
 }
-if(!preg_match('/\d{4}/', $_POST['year']))
+if(!preg_match('/^\d{4}$/', $_POST['year']))
 {
     $errors .= 'year@';
 }
-if(!preg_match('/\d{1,4}/', $_POST['count_of_pages']))
+if(!preg_match('/^\d{1,4}$/', $_POST['count_of_pages']))
 {
     $errors .= 'pages@';
 }
-if(!preg_match('/\d+[\.\,]*\d*/', $_POST['price']))
+if(!preg_match('/^\d+[\.\,]?\d*$/', $_POST['price']))
 {
     $errors .= 'price@'; 
 }
@@ -72,19 +72,17 @@ if ($_FILES['cover']['name'] != '')
             throw new RuntimeException('Invalid file format.');
         }
 
-        $uploadfile = sprintf('./uploads/%s.%s',
+        $uploadfile = sprintf('%s.%s',
             sha1_file($_FILES['cover']['tmp_name']),
             $ext
         );
 
         if (!move_uploaded_file(
             $_FILES['cover']['tmp_name'],
-            $uploadfile
+            $uploadsdir . $uploadfile
         )) {
             throw new RuntimeException('Failed to move uploaded file.');
         }
-
-        echo 'File is uploaded successfully.';
 
     } catch (RuntimeException $e) {
         $errors .= 'cover@';

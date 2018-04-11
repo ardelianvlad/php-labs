@@ -1,15 +1,6 @@
 <?php
 require 'configs/dbconf.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error)
-{
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$conn->set_charset('utf8');
-
 $id = $conn->real_escape_string($_GET['id']);
 
 $sql = 'SELECT * FROM ' . $dbname . ' .books WHERE book_id = ' . $id .';';
@@ -30,15 +21,7 @@ $img = $row['cover'] ?: './img/nocover.png';
 
 ?>
 
-<script type="text/javascript">
-    function onClick() {
-        var txt;
-        var r = confirm("Ви точно хочете видалити цей товар?");
-        if (r == true) {
-            document.location.href = '/index.php?action=delete_book&id=' + <?= $id ?>;
-        }
-    }
-</script>
+<script src="/js/confirm_delete.js"></script>
 
 <div class="container">
     <div class="row">
@@ -54,7 +37,7 @@ $img = $row['cover'] ?: './img/nocover.png';
     }
 ?>
             </div>
-            <img src="<?= $img ?>" alt="Cover" style="width: 75%">
+            <img src="<?= $uploadsdir . $img ?>" alt="Cover" style="width: 75%">
             <h3 class="text-info text-center mt-4"><?= $row['price'] ?>₴</h3>
             <div class="fluid text-center mt-3 mb-3">
                 <a href="#" class="btn btn-warning">Купити</a>
